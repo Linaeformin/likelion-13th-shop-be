@@ -1,16 +1,17 @@
 package com.likelion13th.shop.entity;
 
 import com.likelion13th.shop.constant.ItemSellStatus;
-import com.likelion13th.shop.constant.OrderStatus;
-import com.likelion13th.shop.constant.Role;
 import jakarta.persistence.*;
 import lombok.Getter;
+import lombok.Setter;
+import lombok.ToString;
 
 import java.time.LocalDateTime;
 
 @Entity
 @Table(name="item")
-@Getter
+@Getter @Setter
+@ToString
 public class Item {
     @Id
     @Column(name="item_id")
@@ -27,6 +28,9 @@ public class Item {
 
     private LocalDateTime createdBy;
     private LocalDateTime modifiedBy;
+
+    private String itemImg;
+    private String itemImgPath;
 
     public static Item createItem(String itemName, int price, int stock, String itemDetail, ItemSellStatus itemSellStatus) {
         Item item = new Item();
